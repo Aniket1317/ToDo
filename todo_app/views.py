@@ -49,7 +49,7 @@ def loginuser(request):
 		if user is None:
 			context = {
 				'form':AuthenticationForm(),
-				'error':'Username and password did not match', 
+				'error':'Username and password did not match',
 			}
 			return render(request, 'todo_app/loginuser.html', context)
 		else:
@@ -95,7 +95,7 @@ def completedtodos(request):
 def viewtodo(request, todo_pk):
 	todo = get_object_or_404(Todo, pk=todo_pk, user=request.user)
 	if request.method == 'GET':
-		form = TodoForm(instance=todo) 
+		form = TodoForm(instance=todo)
 		return render(request, 'todo_app/viewtodo.html', {'todo':todo,'form':form})
 	else:
 		try:
