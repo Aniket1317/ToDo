@@ -1,0 +1,58 @@
+@media screen and (max-width: 500px){
+	#hometext {
+		font-size: 0.9rem;
+	}
+	.cdesign{
+		padding-left: 20px;
+		padding-right: 30px;
+		margin-right: 30px;
+		margin-left: 20px;
+	}
+	.navbar{
+		padding: 12px;
+	}
+	.navimg{
+		padding-left: 5px;
+	}
+}
+.navbar-nav > li{
+  padding-left:10px;
+  padding-right:10px;
+}
+
+.navbar-nav > li{
+  margin-left:10px;
+  margin-right:10px;
+}
+
+.nav_a{
+	background-color: #38b030;
+}
+
+.button_design{
+	border: black;
+  	border-style: solid;
+  	border-width: 0.5px;
+	background-color: #21bf46;
+}
+
+.button_design:hover{
+	border: black;
+  	border-style: solid;
+  	border-width: 0.5px;
+	background-color: #8cdb9f;
+}
+
+.home_page{
+	padding-left:30px;
+  	padding-right:30px;
+}
+
+.link_design{
+	font-size: 1.2rem;
+}
+
+.title_design{
+	font-size: 1.5rem;
+}
+

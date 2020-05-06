@@ -1,0 +1,18 @@
+{% extends 'todo_app/base.html' %}
+
+{% block content %}
+<br><br><br><br>
+
+<div class="container" id="hometext">
+<div class="row justify-content-center mt-5">
+    <div class="col-md-7 text-center">
+    	<h1 class="p.a">Your ToDo.Woo!!</h1>
+    	<p style="font-family:Arial, Helvetica, sans-serif" id="hometext">This is amazing , easily add todo notes. It helps you overcome feelings of being overwhelmed, and reduces anxiety around whether you’re being productive throughout the day. It’s up to you to decide what to implement into your own planning system. So, we created <b>ToDo App</b> to encourage you to try these techniques but if you find that only some apply to your life, then by all means take what works for you and leave the rest.
+    	</p>
+    	<a href="{% url 'createtodo' %}" class="btn btn-primary">Let's Start</a>
+	</div>
+</div>
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,52 @@
+{% extends 'todo_app/base.html' %}
+{% csrf_token %}
+
+{% block content %}
+
+<div class="container-md" id="hometext">
+<div class="row justify-content-center mt-5">
+    <div class="col-md-10">
+    {% if todos %}
+        <h1>{{ todos.count }} Completed Todo{{ todos.count|pluralize }}</h1>
+    {% else %}
+        <h1>Completed Todos</h1>
+    {% endif %}
+    </div>
+</div>
+
+{% if todos %}
+<div class="mt-2">
+{% for todo in todos %}
+<div class='col-12 col-md-10 mb-4 mx-auto'>
+<div class="card" style="width: 28rem;">
+  <ul class="list-group list-group-flush">
+  	<a href="{% url 'viewtodo' todo.id %}">
+  	{% if todo.important %}
+    	<li class="list-group-item bg-danger text-body"><b>{{ todo.title }}</b>
+    		{{ todo.timecompleted|date:'M j Y H:i' }}
+    		{% if todo.memo %}<ul><li>{{ todo.memo|truncatechars:10 }}</li></ul>{% endif %}
+    	</li>
+    {% else %}
+    	<li class="list-group-item text-body">{{ todo.title }}
+    		{{ todo.timecompleted|date:'M j Y H:i' }}
+    		{% if todo.memo %}<ul><li>{{ todo.memo|truncatechars:10 }}</li></ul>{% endif %}
+    	</li>
+    {% endif %}
+	</a>
+  </ul>
+</div>
+</div>
+{% endfor %}
+</div>
+
+{% else %}
+<div class="row justify-content-center mt-5">
+	<div class="text-center">
+    <h2>Looks like you completed all your todos! Great work.</h2><br>
+        <a role="button" class="btn btn-primary" href="{% url 'createtodo' %}">New Todo</a>
+    </div>
+{% endif %}
+</div>
+</div>
+{% endblock %}
+

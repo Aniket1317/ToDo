@@ -1,0 +1,65 @@
+{% extends 'todo_app/base.html' %}
+
+{% block content %}
+<div class="container" id="hometext">
+<div class="row justify-content-center mt-5">
+    {% if todo.timecompleted is None %}
+    <div class="col-md-5">
+        <h2>New Todo</h2>
+    </div>
+    {% else %}
+    <div class="col-md-5">
+        <h2>Completed</h2>
+    </div>
+    {% endif %}
+
+</div>
+
+<div class="row justify-content-center mt-2">
+    <div class="col-md-5">
+   	{% if error %}
+   	<div class="alert alert-danger" role="alert">
+		{{ error }}
+	</div>
+	{% endif %}
+
+<!-- edit -->
+<form method="POST">
+	{% csrf_token %}
+	<div class="form-group">
+		<label for="title">Title</label>
+		<input type="text" name="title" class="form-control" id="title" value="{{ todo.title }}" required>
+	</div>
+	<div class="form-group">
+		<label for="title">Memo</label>
+		<textarea name="memo" rows="5" class="form-control" id="memo">{{ todo.memo }}</textarea>
+	</div>
+	<div class="form-group form-check">
+        <input type="checkbox" name="important" class="form-check-input" id="important" 
+        {% if todo.important %}checked{% endif %}>
+        <label class="form-check-label" for="important">Important</label>
+    </div>
+    {% if todo.timecompleted is None %}
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-success" onclick="$('#complete').click()">Complete</button>
+  	<button type="button" class="btn btn-danger" onclick="$('#delete').click()">Delete</button>
+    {% else %}
+    <button type="button" class="btn btn-danger" onclick="$('#delete').click()">Delete</button>
+    {% endif %}
+</form>
+</div>
+</div>
+
+{% if todo.timecompleted is None %}
+    <form style='display: none;' method="POST" action="{% url 'completetodo' todo.id %}">
+    {% csrf_token %}
+    <button id="complete" type="submit">Complete</button>
+    </form>
+{% endif %}
+    <form style='display: none;' method="POST" action="{% url 'deletetodo' todo.id %}">
+    {% csrf_token %}
+    <button id="delete" type="submit">Delete</button>
+    </form>
+
+</div>
+{% endblock %}
