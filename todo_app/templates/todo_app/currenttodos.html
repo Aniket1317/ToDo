@@ -17,8 +17,8 @@
 {% if todos %}
 <div class="mt-2">
 {% for todo in todos %}
-<div class='col-12 col-md-10 mb-4 mx-auto'>
-<div class="card" style="width: 28rem;">
+<div class='col-10 col-md-10 mb-4 mx-auto'>
+<div class="card" style="width: 25rem;">
   <ul class="list-group list-group-flush">
   	<a href="{% url 'viewtodo' todo.id %}">
   	{% if todo.important %}
